@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +14,12 @@
 |
 */
 
-Route::prefix('auth')->group(function() {
+Route::prefix('auth')->group(function () {
     Route::get('/', 'AuthController@index');
 });
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return response()->json(['status' => "Email verified!"], 200);
+})->middleware(['auth:sanctum', 'signed'])->name('verification.verify');
