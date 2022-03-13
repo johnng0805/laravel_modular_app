@@ -2,6 +2,7 @@
 
 namespace Modules\Auth\Http\Controllers\Api;
 
+use App\Http\Controllers\ApiCode;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -45,7 +46,7 @@ class RegisterController extends AuthController
             return $user;
         } catch (\PDOException $e) {
             error_log($e);
-            return response()->json(['error' => 'Internal server error.'], 500);
+            return response()->json(['error' => 'Internal server error.'], ApiCode::INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -61,13 +62,13 @@ class RegisterController extends AuthController
         $validator = $this->validator($credentials);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
+            return response()->json($validator->errors(), ApiCode::BAD_REQUEST);
         }
 
         $user = $this->initUser($credentials);
 
         event(new Registered($user));
 
-        return response()->json(['status' => 'Email verification sent!'], 201);
+        return response()->json(['status' => 'Email verification sent!'], ApiCode::HTTP_CREATE);
     }
 }

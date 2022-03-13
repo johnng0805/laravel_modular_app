@@ -2,6 +2,7 @@
 
 namespace Modules\Auth\Http\Controllers\Api;
 
+use App\Http\Controllers\ApiCode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\Auth\Http\Controllers\AuthController;
@@ -35,11 +36,11 @@ class LoginController extends AuthController
         $validator = $this->validator($credentials);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
+            return response()->json($validator->errors(), ApiCode::BAD_REQUEST);
         }
 
         if (!Auth::attempt($credentials)) {
-            return response()->json(['error' => 'Email or password incorrect.'], 403);
+            return response()->json(['error' => 'Email or password incorrect.'], ApiCode::FORBIDDEN);
         }
 
         $token = $request->user()->createToken('laravel-token', ['user:basic'])->plainTextToken;
