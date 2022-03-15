@@ -23,8 +23,4 @@ Route::group([
     Route::post('/login', [\Modules\Auth\Http\Controllers\Api\LoginController::class, 'login']);
 });
 
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-
-    return response()->json(['status' => "Email verified!"], 200);
-})->middleware(['auth:sanctum', 'signed'])->name('verification.verify');
+Route::post('/email/verify', [\Modules\Auth\Http\Controllers\Api\VerificationController::class, 'verify'])->name('user.verify')->middleware('signed');
