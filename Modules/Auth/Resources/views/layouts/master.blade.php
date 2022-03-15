@@ -7,13 +7,13 @@
         <title>Module Auth</title>
 
        {{-- Laravel Mix - CSS File --}}
-       {{-- <link rel="stylesheet" href="{{ mix('css/auth.css') }}"> --}}
+       <link rel="stylesheet" href="css/auth.css">
 
     </head>
     <body>
         @yield('content')
 
         {{-- Laravel Mix - JS File --}}
-        {{-- <script src="{{ mix('js/auth.js') }}"></script> --}}
+        <script src="{{ mix('js/auth.js') }}"></script>
     </body>
 </html>
