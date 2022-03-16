@@ -10,7 +10,10 @@
        <link rel="stylesheet" href="css/auth.css">
 
     </head>
-    <body>
+    <body class="bg-gray-200">
+        <div class="flex align-items-center justify-content-center bg-inherit p-4">
+            <h1 class="m-auto text-3xl font-bold">Module Auth</h1>
+        </div>
         @yield('content')
 
         {{-- Laravel Mix - JS File --}}
