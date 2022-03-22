@@ -12,6 +12,11 @@ use Modules\Auth\Http\Controllers\AuthController;
 
 class VerificationController extends AuthController
 {
+    public function index()
+    {
+        return view("auth::emailNotice");
+    }
+
     /**
      * Verify Email Address
      * 

@@ -7,11 +7,11 @@
         <title>Module Auth</title>
 
        {{-- Laravel Mix - CSS File --}}
-       <link rel="stylesheet" href="css/auth.css">
+       <link rel="stylesheet" href="/css/auth.css">
 
     </head>
-    <body class="bg-gray-200">
-        <div class="flex align-items-center justify-content-center bg-inherit p-4">
+    <body class="bg-gray-300">
+        <div class="flex align-items-center justify-content-center bg-inherit p-4 pt-8">
             <h1 class="m-auto text-3xl font-bold">Module Auth</h1>
         </div>
         @yield('content')

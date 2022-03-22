@@ -13,12 +13,6 @@ use Modules\Auth\Http\Controllers\AuthController;
 
 class RegisterController extends AuthController
 {
-    /**
-     * Validate incoming request's data.
-     *  
-     * @param array $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
     protected function validator(array $data)
     {
         return Validator::make($data, [

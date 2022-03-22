@@ -76,4 +76,14 @@ class AuthController extends Controller
     {
         //
     }
+
+    /**
+     * Validate inputs
+     * @param array $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        //
+    }
 }
