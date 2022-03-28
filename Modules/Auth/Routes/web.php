@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +18,15 @@ Route::group([
     'prefix' => 'auth'
 ], function () {
     Route::get('/login', [\Modules\Auth\Http\Controllers\Web\LoginController::class, 'index'])->name('login');
-    Route::get('/register', [\Modules\Auth\Http\Controllers\Web\RegisterController::class, 'index'])->name('register');
     Route::post('/login', [\Modules\Auth\Http\Controllers\Web\LoginController::class, 'login']);
+    Route::get('/register', [\Modules\Auth\Http\Controllers\Web\RegisterController::class, 'index'])->name('register');
     Route::post('/register', [\Modules\Auth\Http\Controllers\Web\RegisterController::class, 'register']);
+
+    Route::get('/forgot-password', [\Modules\Auth\Http\Controllers\Web\ForgotPasswordController::class, 'index'])->name('password.request');
+    Route::post('/forgot-password', [\Modules\Auth\Http\Controllers\Web\ForgotPasswordController::class, 'requestLink'])->name('password.email');
+
+    Route::get('/reset-password/{token}', [\Modules\Auth\Http\Controllers\Web\ResetPasswordController::class, 'form'])->name('password.reset');
+    Route::post('/reset-password', [\Modules\Auth\Http\Controllers\Web\ResetPasswordController::class, 'reset'])->name('password.update');
 });
 
 Route::middleware('auth')->group(function () {
