@@ -9,19 +9,16 @@
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
                   Email
                 </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('email') border-red-500 @enderror" id="email" type="email" placeholder="abc@mail.com" name="email" value="{{ old('email') }}" required>
-                @error('email')
-                  <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                @enderror
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('error') border-red-500 @enderror" id="email" type="email" placeholder="abc@mail.com" name="email" value="{{ old('email') }}" required>
               </div>
               <div class="mb-6">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
                   Password
                 </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline @error('password') border-red-500 @enderror" id="password" type="password" name="password" placeholder="***" value="{{ old('password') }}" required>
-                @error('password')
-                  <p class="text-red-500 text-xs italic">Please choose a password.</p>
-                @enderror
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline @error('error') border-red-500 @enderror" id="password" type="password" name="password" placeholder="***" value="{{ old('password') }}" required>
+                @if ($errors->any())
+                  <p class="w-100 text-red-500 bg-red-300 text-center">{{ $errors->first() }}</p> 
+                @endif 
               </div>
               <div class="flex items-center justify-between mb-6">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">

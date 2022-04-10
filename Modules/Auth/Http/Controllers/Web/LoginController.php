@@ -34,11 +34,11 @@ class LoginController extends AuthController
         $val = $this->validator($credentials);
 
         if ($val->fails()) {
-            return back()->withErrors($val->errors());
+            return back()->withErrors('Email or password incorrect');
         }
 
         if (!Auth::attempt($credentials)) {
-            return response()->json(['error' => 'Invalid credentials'], ApiCode::FORBIDDEN);
+            return back()->withErrors('Email or password incorrect');
         }
 
         $request->session()->regenerate();
