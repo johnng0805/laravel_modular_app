@@ -23,4 +23,6 @@ Route::group([
     Route::post('/login', [\Modules\Auth\Http\Controllers\Api\LoginController::class, 'login']);
 });
 
+Route::get('/logout', [\Modules\Auth\Http\Controllers\Api\LogoutController::class, 'logout'])->name('logout')->middleware('auth:sanctum');
+
 Route::post('/email/verify', [\Modules\Auth\Http\Controllers\Api\VerificationController::class, 'verify'])->name('user.verify')->middleware('signed');
